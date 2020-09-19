@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pesbuk-web
+  namespace: production
+  labels:
+    name: pesbuk-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: pesbuk-web
+  template:
+    metadata:
+      name: pesbuk-web
+      labels:
+        name: pesbuk-web
+    spec:
+      containers:
+        - name: pesbuk-web
+          image: indragiri21/pesbuk-bigpro:buildNumber
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: pesbuk-env-secret
+          volumeMounts:
+          - name: pesbuk-env-config
+            mountPath: "/var/www/html/config"
+      volumes:
+      - configMap:
+            name: pesbuk-env-config
+        name: pesbuk-env-config

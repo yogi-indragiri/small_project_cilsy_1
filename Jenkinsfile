@@ -17,7 +17,8 @@ pipeline {
         }
         stage('Deploy Kubernetes') {
             steps {
-                echo 'Deploy Kubernetes'
+                sh 'sed -i "s/buildNumber/$BUILD_NUMBER/g" deployment.yaml'
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
