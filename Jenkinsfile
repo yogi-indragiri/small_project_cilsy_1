@@ -52,7 +52,7 @@ pipeline {
                 '''
             }
         }
-        stage('Remove Docker Image') {
+        stage('Remove Docker Image Dev') {
             when {
                 branch 'development'
             }
