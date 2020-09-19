@@ -21,8 +21,8 @@ pipeline {
             }
             steps {
                 sh '''
-                sed -i "s/buildNumber/$BUILD_NUMBER/g" deployment.yaml
-                kubectl apply -f deployment.yaml
+                sed -i "s/buildNumber/$BUILD_NUMBER/g" dev-deployment.yaml
+                kubectl apply -f dev-deployment.yaml
                 '''
             }
         }
