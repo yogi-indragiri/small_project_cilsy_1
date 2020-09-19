@@ -22,12 +22,20 @@ pipeline {
                 sh 'docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:$BUILD_NUMBER .'
             }
         }
-        stage('Push Image Docker') {
+        stage('Push Image Docker Dev') {
             steps {
                 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
                     sh "docker login -u indragiri21 -p ${dockerHubPwd}"
                 }
-                sh 'docker push indragiri21/pesbuk-bigpro:$BUILD_NUMBER'
+                sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME_DEV:$BUILD_NUMBER'
+            }
+        }
+        stage('Push Image Docker Prod') {
+            steps {
+                withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u indragiri21 -p ${dockerHubPwd}"
+                }
+                sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:$BUILD_NUMBER'
             }
         }
         stage('Deploy Kubernetes Dev') {
