@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Image Docker') {
             steps {
-                echo 'Build Docker'
+                sh 'docker build -t indragiri21/pesbuk-bigpro:0.1 .'
             }
         }
         stage('Push Image Docker') {
