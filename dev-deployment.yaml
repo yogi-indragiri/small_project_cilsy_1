@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: pesbuk-web
-          image: indragiri21/pesbuk-bigpro:buildNumber
+          image: indragiri21/pesbuk-bigpro-dev:buildNumber
           ports:
             - containerPort: 8080
           envFrom:
