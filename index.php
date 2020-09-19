@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h1>Selamat datang di Pesbuk</h1>
-                        <h2 style="color: blue;">Hallo Ini Update</h2>
+                        <h2 style="color: blue;">Hallo Ini Update dev</h2>
                         <p>Bergabunglah bersama jutaan orang lainnya...</p>
                     </div>
                     <div class="col-md-4">
