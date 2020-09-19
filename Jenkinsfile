@@ -2,10 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build Image Docker') {
             steps {
-                echo 'Hello World'
+                echo 'Build Docker'
             }
         }
     }
+    stages {
+        stage('Push Image Docker') {
+            steps {
+                echo 'Push Image'
+            }
+        }
+    }
+    stages {
+        stage('Deploy Kubernetes') {
+            steps {
+                echo 'Deploy Kubernetes'
+            }
+        }
+    }
+
+
 }
