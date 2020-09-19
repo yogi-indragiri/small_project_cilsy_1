@@ -53,7 +53,20 @@ pipeline {
             }
         }
         stage('Remove Docker Image') {
-            sh "docker rmi $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"   
+            when {
+                branch 'development'
+            }
+            steps {
+                sh "docker rmi $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME_DEV:${BUILD_NUMBER}"   
+            }
+        }
+        stage('Remove Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh "docker rmi $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"   
+            }
         }
     }
 }
