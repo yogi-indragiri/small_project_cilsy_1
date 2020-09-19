@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Image Docker') {
             steps {
-                sh 'docker build -t indragiri21/pesbuk-bigpro:0.1 .'
+                sh 'docker build -t indragiri21/pesbuk-bigpro:$BUILD_NUMBER .'
             }
         }
         stage('Push Image Docker') {
