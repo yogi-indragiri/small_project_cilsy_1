@@ -23,6 +23,9 @@ pipeline {
             }
         }
         stage('Push Image Docker Dev') {
+            when {
+                branch 'development'
+            }
             steps {
                 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
                     sh "docker login -u indragiri21 -p ${dockerHubPwd}"
@@ -31,6 +34,9 @@ pipeline {
             }
         }
         stage('Push Image Docker Prod') {
+            when {
+                branch 'master'
+            }
             steps {
                 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
                     sh "docker login -u indragiri21 -p ${dockerHubPwd}"
